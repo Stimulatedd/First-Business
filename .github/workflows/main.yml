@@ -1,8 +1,10 @@
 name: Post AI-generated Tweets
 
+# Add 'workflow_dispatch' event to enable manual triggers
 on:
   schedule:
-    - cron: '0 9 * * *'  # Runs every day at 9 AM UTC (adjust time as needed)
+    - cron: '0 9 * * *'  # Scheduled to run daily at 9 AM UTC
+  workflow_dispatch:  # This enables the 'Run workflow' button
 
 jobs:
   run-tweet-bot:
