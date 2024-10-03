@@ -1,0 +1,25 @@
+name: Post AI-generated Tweets
+
+on:
+  schedule:
+    - cron: '0 9 * * *'  # Runs every day at 9 AM UTC (adjust time as needed)
+
+jobs:
+  run-tweet-bot:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+
+      - name: Install dependencies
+        run: |
+          pip install tweepy transformers
+
+      - name: Run tweet bot
+        run: python tweet_bot.py
