@@ -5,8 +5,8 @@ from transformers import pipeline
 # Twitter API credentials
 consumer_key = 'mdnWph0fdtygc2htNI74TWbgT'
 consumer_secret = 'UNp4g71bOY7jT9CC6yVhqV9h9UiYsjuoIP9lWdpWLzIVasrUvw'
-access_token = '1471604210806312960-IAWhWrJ5bmF7zjndFq0aXXYhdO2P4K'
-access_token_secret = 'xJ3cGZySRtUZwwHL4B1z4OoowSMCPjWMcrxoX4QohAe3r'
+access_token = '1471604210806312960-Bnap3H4Gz1WAiHQ0h5fbLJrZvHcRDZ'
+access_token_secret = 'UFcTcazcGxIYAz3j2ctnJvEj1Amcq97iHaDUQ9Pip5NAO'
 
 # Authenticate with Twitter
 auth = tweepy.OAuth1UserHandler(consumer_key, consumer_secret, access_token, access_token_secret)
