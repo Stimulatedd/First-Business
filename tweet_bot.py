@@ -22,6 +22,8 @@ def generate_tweet(theme):
 # Generate and post the tweet
 theme = "motivation"  # You can change the theme
 tweet_content = generate_tweet(theme)
+api.update_status(tweet_content)
+print(f"Posted Tweet: {tweet_content}")
 
 # Error handling for posting the tweet
 try:
