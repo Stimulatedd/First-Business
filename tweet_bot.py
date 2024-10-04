@@ -3,10 +3,14 @@ import tweepy
 from transformers import pipeline
 
 # Twitter API credentials
-bearer_token = 'AAAAAAAAAAAAAAAAAAAAALPdwAEAAAAAw8MtueNsnibVjiu3d5%2Bdj%2BAT48Y%3DSNxG6fITTyaoDVEnW1D5a3DNwNtpRHmGWFMXnCSPmhtmIWdocq'  # Use bearer token for v2 API
+consumer_key = 'GHdNOl1bBFV6Tlq65xdKs5c4H'  # Replace with your actual consumer key
+consumer_secret = 'JUSi3qDoMbVclLaCYN4MwHIFhdCaloAeGZGLPyMNJZ6NwD6Djn'  # Replace with your actual consumer secret
+access_token = '1471604210806312960-0UjgJAvB7yl1QKsSA3RssAOmDHPrEU'  # Replace with your actual access token
+access_token_secret = 'ZhUcMB9Bze6f51BeA88VdqeauPCWU8EZzPKKafhIIpAZn'  # Replace with your actual access token secret
 
 # Authenticate with Twitter
-client = tweepy.Client(bearer_token=bearer_token)
+auth = tweepy.OAuth1UserHandler(consumer_key, consumer_secret, access_token, access_token_secret)
+api = tweepy.API(auth)
 
 # Function to generate a tweet using Hugging Face GPT-2
 def generate_tweet(theme):
@@ -19,9 +23,9 @@ def generate_tweet(theme):
 theme = "motivation"  # You can change the theme
 tweet_content = generate_tweet(theme)
 
-# Post the tweet using the v2 API
+# Post the tweet
 try:
-    response = client.create_tweet(text=tweet_content)
-    print(f"Posted Tweet: {tweet_content} with ID: {response.data['id']}")
+    api.update_status(tweet_content)
+    print(f"Posted Tweet: {tweet_content}")
 except tweepy.TweepyException as e:
     print(f"Error posting tweet: {e}")
