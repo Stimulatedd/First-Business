@@ -1,4 +1,4 @@
-# Import necessary libraries
+# Import necessary libraries 
 import tweepy
 from transformers import pipeline
 
@@ -23,9 +23,17 @@ def generate_tweet(theme):
 theme = "motivation"  # You can change the theme
 tweet_content = generate_tweet(theme)
 
-# Post the tweet
-try:
-    api.update_status(tweet_content)
-    print(f"Posted Tweet: {tweet_content}")
-except tweepy.TweepyException as e:
-    print(f"Error posting tweet: {e}")
+# Print the generated tweet for debugging
+print(f"Generated Tweet: {tweet_content}")
+
+# Check tweet length and post the tweet
+if len(tweet_content) <= 280:
+    try:
+        api.update_status(tweet_content)
+        print(f"Posted Tweet: {tweet_content}")
+    except tweepy.TweepyException as e:
+        # Print the error response and error code
+        print(f"Error posting tweet: {e.response.text}")  # Prints the error response text
+        print(f"Error Code: {e.api_code}")  # Prints the specific API error code
+else:
+    print("Tweet is too long!")
